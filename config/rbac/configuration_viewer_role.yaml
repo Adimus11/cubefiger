@@ -1,0 +1,23 @@
+# permissions for end users to view configurations.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: cubefiger
+    app.kubernetes.io/managed-by: kustomize
+  name: configuration-viewer-role
+rules:
+- apiGroups:
+  - cubefiger.jamnikco.de
+  resources:
+  - configurations
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - cubefiger.jamnikco.de
+  resources:
+  - configurations/status
+  verbs:
+  - get
